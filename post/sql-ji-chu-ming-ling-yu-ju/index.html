@@ -1,0 +1,306 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SQL基础命令语句 | Gridea</title>
+<link rel="shortcut icon" href="https://freecille.github.io/favicon.ico?v=1601661145980">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://freecille.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="SQL基础命令语句 | Gridea - Atom Feed" href="https://freecille.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="1.查看表参数
+show columns from 表名；
+mysql&gt; show columns from func;
++-------+------------------------------+------+-----+---..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://freecille.github.io">
+  <img class="avatar" src="https://freecille.github.io/images/avatar.png?v=1601661145980" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              SQL基础命令语句
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-10-02
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>1.查看表参数<br>
+show columns from 表名；<br>
+mysql&gt; show columns from func;<br>
++-------+------------------------------+------+-----+---------+-------+<br>
+| Field | Type                         | Null | Key | Default | Extra |<br>
++-------+------------------------------+------+-----+---------+-------+<br>
+| name  | char(64)                     | NO   | PRI |         |       |<br>
+| ret   | tinyint                      | NO   |     | 0       |       |<br>
+| dl    | char(128)                    | NO   |     |         |       |<br>
+| type  | enum('function','aggregate') | NO   |     | NULL    |       |<br>
++-------+------------------------------+------+-----+---------+-------+<br>
+4 rows in set (0.10 sec)</p>
+<h1 id="增">增</h1>
+<ol>
+<li></li>
+</ol>
+<h1 id="删">删</h1>
+<h1 id="改">改</h1>
+<h1 id="查">查</h1>
+<h2 id="检索数据">检索数据</h2>
+<h3 id="show语句">SHOW语句</h3>
+<p>1)显示数据库</p>
+<pre><code>show databases;
+</code></pre>
+<p>2)显示库里所有的表</p>
+<pre><code>show tables;
+</code></pre>
+<p>3)显示表中各个字段的详细信息</p>
+<pre><code>show columns 表名;
+</code></pre>
+<p>4)显示服务器状态信息</p>
+<pre><code>show status;
+</code></pre>
+<p>5)显示创建数据库或表的SQL语句</p>
+<pre><code>show create 数据库名/表名;
+</code></pre>
+<p>6)显示用户的权限</p>
+<pre><code>show grants;
+</code></pre>
+<p>7)显示服务器错误或警告消息</p>
+<pre><code>show errors;
+show warnings;
+</code></pre>
+<h3 id="select语句">SELECT语句</h3>
+<p>1.检索信息，根据选择字段显示所需要的记录信息（字段名用英文逗号隔开，显示所有字段用星号）</p>
+<pre><code>SELECT  id,name FROM stundent;
+SELECT * FROM student;
+</code></pre>
+<p>2.检索不同的行，DISTINCT只返回不同的值</p>
+<pre><code>SELECT  DISTINCT  id;
+</code></pre>
+<p>3.检索限制结果，LIMIT显示指定行数（从第五行开始，向下取五行）注：第一行为行0，第二行为行1</p>
+<pre><code>SELECT  id from student LIMIT 5,5;
+</code></pre>
+<p>4.检索使用完全限定的表名列名</p>
+<pre><code>SELECT  class.id FROM school.class;
+</code></pre>
+<h2 id="排序检索数据">排序检索数据</h2>
+<p>1.ORDER BY取一列或多列字段进行排序</p>
+<pre><code>SELECT id,name,sex FROM student ORDER BY name,sex;
+</code></pre>
+<p>2.默认排序为(A<sub>Z)升序排序，可使用DESC进行(Z</sub>A)降序排序。注：要想多列进行降序排序，必须每列指定DESC关键字</p>
+<pre><code>SELECT id,name,sex FROM student ORDER BY name,sex DESC;
+</code></pre>
+<p>2.组合使用ORDER BY和LIMIT，可以取出一列的最高或最低值（取id最大的一行，LIMIT只返回一行）</p>
+<pre><code>SELECT id,name,sex FROM student ORDER BY id DESC LIMIT 1;
+</code></pre>
+<h2 id="过滤数据">过滤数据</h2>
+<h3 id="where子句">WHERE子句</h3>
+<p>1.指定条件检索</p>
+<pre><code>SELECT id,name,sex FROM student WHERE id = 2;
+</code></pre>
+<p>操作符<br>
+=    等于<br>
+&lt;&gt; 不等于<br>
+!=  不等于<br>
+&lt;    小于<br>
+&lt;= 小于等于</p>
+<blockquote>
+<p>大于<br>
+=  大于等于<br>
+BETWEEN  两值之间</p>
+</blockquote>
+<p>2.不匹配检查，例如：不是xxx的产品</p>
+<pre><code>SELECT id,name FROM products WHERE id &lt;&gt; 2000;
+</code></pre>
+<p>3.范围检索，例如：id在10~20之间的产品</p>
+<pre><code>SELECT id,name FROM products WHERE id BETWEEN 10 AND 20;
+</code></pre>
+<p>4.空值检查，例如：查询没有性别的学生</p>
+<pre><code>SELECT id,name,sex FROM student WHERE sex IS NULL;
+</code></pre>
+<h2 id="数据过滤">数据过滤</h2>
+<h3 id="组合where子句">组合WHERE子句</h3>
+<p>AND子句与OR子句，AND和OR为逻辑操作符，AND代表并，OR代表或<br>
+1.AND子句与WHERE子句结合，查询必须满足两者条件的数据</p>
+<pre><code>SELECT id,name FROM products WHERE id &lt;&gt; 2000 AND id &gt; 1000;
+</code></pre>
+<p>2.OR子句与WHERE子句结合，查询时满足其中一个条件即可</p>
+<pre><code>SELECT id,name FROM products WHERE id &lt;&gt; 2000 OR id &lt;&gt; 1000;
+</code></pre>
+<p>AND子句与OR子句可以重复使用，达到高级过滤效果<br>
+3.当AND子句与OR子句同时使用时，优先处理AND逻辑操作符，要想先处理OR子句，给OR子句加上括号</p>
+<pre><code>SELECT id,name FROM products WHERE (id &lt;&gt; 2000 OR id &lt;&gt; 1000) AND  id = 1500;
+</code></pre>
+<p>4.IN操作符，指定范围匹配查询</p>
+<pre><code>SELECT stu_id,stu_name FROM student WHERE class_id IN (102,103) ORDER BY stu_id;
+</code></pre>
+<p>5.NOT操作符，否定之后的所有条件，列出除了102班和103班的所有学生</p>
+<pre><code>SELECT stu_id,stu_name FROM student WHERE class_id NOT IN (102,103) ORDER BY stu_id;
+</code></pre>
+<h2 id="使用通配符过滤">使用通配符过滤</h2>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E5%A2%9E">增</a></li>
+<li><a href="#%E5%88%A0">删</a></li>
+<li><a href="#%E6%94%B9">改</a></li>
+<li><a href="#%E6%9F%A5">查</a>
+<ul>
+<li><a href="#%E6%A3%80%E7%B4%A2%E6%95%B0%E6%8D%AE">检索数据</a>
+<ul>
+<li><a href="#show%E8%AF%AD%E5%8F%A5">SHOW语句</a></li>
+<li><a href="#select%E8%AF%AD%E5%8F%A5">SELECT语句</a></li>
+</ul>
+</li>
+<li><a href="#%E6%8E%92%E5%BA%8F%E6%A3%80%E7%B4%A2%E6%95%B0%E6%8D%AE">排序检索数据</a></li>
+<li><a href="#%E8%BF%87%E6%BB%A4%E6%95%B0%E6%8D%AE">过滤数据</a>
+<ul>
+<li><a href="#where%E5%AD%90%E5%8F%A5">WHERE子句</a></li>
+</ul>
+</li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E8%BF%87%E6%BB%A4">数据过滤</a>
+<ul>
+<li><a href="#%E7%BB%84%E5%90%88where%E5%AD%90%E5%8F%A5">组合WHERE子句</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E9%80%9A%E9%85%8D%E7%AC%A6%E8%BF%87%E6%BB%A4">使用通配符过滤</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://freecille.github.io/post/an-zhuang-mysql-8021-zip/">
+              <h3 class="post-title">
+                安装MYSQL 8.0.21 zip
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://freecille.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
