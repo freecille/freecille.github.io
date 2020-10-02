@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://freecille.github.io</id>
     <title>Gridea</title>
-    <updated>2020-10-02T07:01:53.619Z</updated>
+    <updated>2020-10-02T07:09:15.595Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://freecille.github.io"/>
     <link rel="self" href="https://freecille.github.io/atom.xml"/>
@@ -24,31 +24,32 @@
 例如：&quot;D:\Program File(x86)\MySQL\mysql-8.0.21-winx64\bin&quot;</p>
 <p>4.在&quot;D:\Program File(x86)\MySQL\mysql-8.0.21-winx64&quot;目录下，<br>
 创建my.ini配置文件，配置文件内容如下：</p>
-<p>[mysqld]</p>
-<h1 id="设置3306端口">设置3306端口</h1>
-<p>port=3306</p>
-<h1 id="设置mysql的安装目录">设置mysql的安装目录</h1>
-<p>basedir=D:\Program Files\mysql-8.0.21-winx64</p>
-<h1 id="设置mysql数据库的数据的存放目录">设置mysql数据库的数据的存放目录</h1>
-<p>datadir=D:\Program Files\mysql-8.0.21-winx64\Data</p>
-<h1 id="允许最大连接数">允许最大连接数</h1>
-<p>max_connections=200</p>
-<h1 id="允许连接失败的次数">允许连接失败的次数。</h1>
-<p>max_connect_errors=10</p>
-<h1 id="服务端使用的字符集默认为utf8mb4">服务端使用的字符集默认为utf8mb4</h1>
-<p>character-set-server=utf8mb4</p>
-<h1 id="创建新表时将使用的默认存储引擎">创建新表时将使用的默认存储引擎</h1>
-<p>default-storage-engine=INNODB</p>
-<h1 id="默认使用mysql_native_password插件认证">默认使用“mysql_native_password”插件认证</h1>
-<p>#mysql_native_password<br>
-default_authentication_plugin=mysql_native_password<br>
-[mysql]</p>
-<h1 id="设置mysql客户端默认字符集">设置mysql客户端默认字符集</h1>
-<p>default-character-set=utf8mb4<br>
-[client]</p>
-<h1 id="设置mysql客户端连接服务端时默认使用的端口">设置mysql客户端连接服务端时默认使用的端口</h1>
-<p>port=3306<br>
-default-character-set=utf8mb4</p>
+<pre><code>[mysqld]
+# 设置3306端口
+port=3306
+# 设置mysql的安装目录
+basedir=D:\Program Files\mysql-8.0.21-winx64
+# 设置mysql数据库的数据的存放目录
+datadir=D:\Program Files\mysql-8.0.21-winx64\Data
+# 允许最大连接数
+max_connections=200
+# 允许连接失败的次数。
+max_connect_errors=10
+# 服务端使用的字符集默认为utf8mb4
+character-set-server=utf8mb4
+# 创建新表时将使用的默认存储引擎
+default-storage-engine=INNODB
+# 默认使用“mysql_native_password”插件认证
+#mysql_native_password
+default_authentication_plugin=mysql_native_password
+[mysql]
+# 设置mysql客户端默认字符集
+default-character-set=utf8mb4
+[client]
+# 设置mysql客户端连接服务端时默认使用的端口
+port=3306
+default-character-set=utf8mb4
+</code></pre>
 <p>5.管理员模式运行cmd<br>
 进入&quot;D:\Program File(x86)\MySQL\mysql-8.0.21-winx64\bin&quot;目录下，<br>
 执行命令<br>
