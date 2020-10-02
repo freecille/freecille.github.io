@@ -1,0 +1,223 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>安装MYSQL 8.0.21 zip | Gridea</title>
+<link rel="shortcut icon" href="https://freecille.github.io/favicon.ico?v=1601622105747">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://freecille.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="安装MYSQL 8.0.21 zip | Gridea - Atom Feed" href="https://freecille.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="MYSQL 8.0.21下载地址https://dev.mysql.com/downloads/mysql/
+1.选择 &quot;Windows (x86, 64-bit), ZIP Archive&quot;8.0.21版本，downl..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://freecille.github.io">
+  <img class="avatar" src="https://freecille.github.io/images/avatar.png?v=1601622105747" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              安装MYSQL 8.0.21 zip
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-10-02
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>MYSQL 8.0.21下载地址https://dev.mysql.com/downloads/mysql/<br>
+1.选择 &quot;Windows (x86, 64-bit), ZIP Archive&quot;8.0.21版本，download<br>
+2.将压缩包内容解压到想要安装的目录位置<br>
+3.添加环境变量<br>
+1）path添加：mysql安装目录下的bin文件夹地址。（这是一种不添加%MySQL_HOME%变量的方法）<br>
+例如：&quot;D:\Program File(x86)\MySQL\mysql-8.0.21-winx64\bin&quot;</p>
+<p>4.在&quot;D:\Program File(x86)\MySQL\mysql-8.0.21-winx64&quot;目录下，<br>
+创建my.ini配置文件，配置文件内容如下：</p>
+<p>[mysqld]</p>
+<h1 id="设置3306端口">设置3306端口</h1>
+<p>port=3306</p>
+<h1 id="设置mysql的安装目录">设置mysql的安装目录</h1>
+<p>basedir=D:\Program Files\mysql-8.0.21-winx64</p>
+<h1 id="设置mysql数据库的数据的存放目录">设置mysql数据库的数据的存放目录</h1>
+<p>datadir=D:\Program Files\mysql-8.0.21-winx64\Data</p>
+<h1 id="允许最大连接数">允许最大连接数</h1>
+<p>max_connections=200</p>
+<h1 id="允许连接失败的次数">允许连接失败的次数。</h1>
+<p>max_connect_errors=10</p>
+<h1 id="服务端使用的字符集默认为utf8mb4">服务端使用的字符集默认为utf8mb4</h1>
+<p>character-set-server=utf8mb4</p>
+<h1 id="创建新表时将使用的默认存储引擎">创建新表时将使用的默认存储引擎</h1>
+<p>default-storage-engine=INNODB</p>
+<h1 id="默认使用mysql_native_password插件认证">默认使用“mysql_native_password”插件认证</h1>
+<p>#mysql_native_password<br>
+default_authentication_plugin=mysql_native_password<br>
+[mysql]</p>
+<h1 id="设置mysql客户端默认字符集">设置mysql客户端默认字符集</h1>
+<p>default-character-set=utf8mb4<br>
+[client]</p>
+<h1 id="设置mysql客户端连接服务端时默认使用的端口">设置mysql客户端连接服务端时默认使用的端口</h1>
+<p>port=3306<br>
+default-character-set=utf8mb4</p>
+<p>5.管理员模式运行cmd<br>
+进入&quot;D:\Program File(x86)\MySQL\mysql-8.0.21-winx64\bin&quot;目录下，<br>
+执行命令<br>
+mysqld --initialize --console</p>
+<p>6.复制localhost后面的临时密码，之后会它用来改密码</p>
+<p>7.安装MySQL服务<br>
+mysqld --install</p>
+<p>8.启动MYSQL服务<br>
+net start mysql</p>
+<p>9.修改密码<br>
+1）下载Navicat<br>
+新建连接，输入密码，测试连接是否成功，成功点击确定。<br>
+双击刚刚建立的连接，会提示密码失效，这时候输入新密码即可。</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E8%AE%BE%E7%BD%AE3306%E7%AB%AF%E5%8F%A3">设置3306端口</a></li>
+<li><a href="#%E8%AE%BE%E7%BD%AEmysql%E7%9A%84%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95">设置mysql的安装目录</a></li>
+<li><a href="#%E8%AE%BE%E7%BD%AEmysql%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AD%98%E6%94%BE%E7%9B%AE%E5%BD%95">设置mysql数据库的数据的存放目录</a></li>
+<li><a href="#%E5%85%81%E8%AE%B8%E6%9C%80%E5%A4%A7%E8%BF%9E%E6%8E%A5%E6%95%B0">允许最大连接数</a></li>
+<li><a href="#%E5%85%81%E8%AE%B8%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5%E7%9A%84%E6%AC%A1%E6%95%B0">允许连接失败的次数。</a></li>
+<li><a href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E4%BD%BF%E7%94%A8%E7%9A%84%E5%AD%97%E7%AC%A6%E9%9B%86%E9%BB%98%E8%AE%A4%E4%B8%BAutf8mb4">服务端使用的字符集默认为utf8mb4</a></li>
+<li><a href="#%E5%88%9B%E5%BB%BA%E6%96%B0%E8%A1%A8%E6%97%B6%E5%B0%86%E4%BD%BF%E7%94%A8%E7%9A%84%E9%BB%98%E8%AE%A4%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E">创建新表时将使用的默认存储引擎</a></li>
+<li><a href="#%E9%BB%98%E8%AE%A4%E4%BD%BF%E7%94%A8mysql_native_password%E6%8F%92%E4%BB%B6%E8%AE%A4%E8%AF%81">默认使用“mysql_native_password”插件认证</a></li>
+<li><a href="#%E8%AE%BE%E7%BD%AEmysql%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%BB%98%E8%AE%A4%E5%AD%97%E7%AC%A6%E9%9B%86">设置mysql客户端默认字符集</a></li>
+<li><a href="#%E8%AE%BE%E7%BD%AEmysql%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%97%B6%E9%BB%98%E8%AE%A4%E4%BD%BF%E7%94%A8%E7%9A%84%E7%AB%AF%E5%8F%A3">设置mysql客户端连接服务端时默认使用的端口</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://freecille.github.io/post/hello-gridea/">
+              <h3 class="post-title">
+                Hello Gridea
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://freecille.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
